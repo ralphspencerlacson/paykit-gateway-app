@@ -1,0 +1,1 @@
+Add more frontend projects here. Adjust docker-compose yml file accordingly.
