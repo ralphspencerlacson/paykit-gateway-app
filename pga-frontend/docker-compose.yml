@@ -1,11 +1,11 @@
 version: "3.8"
 
 networks:
-  app-database_app-network:
+  pga-database_pga-network:
     external: true
 
 services:
-  app-react:
+  pga-react:
     container_name: react
     build:
       context: ./
@@ -19,5 +19,5 @@ services:
       - 30003:5173
     restart: unless-stopped
     networks:
-      app-database_app-network:
+      pga-database_pga-network:
         ipv4_address: 172.30.0.24

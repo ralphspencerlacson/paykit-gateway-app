@@ -1,7 +1,7 @@
 version: "3.8"
 
 networks:
-  app-network:
+  pga-network:
     driver: bridge
     ipam:
       config:
@@ -9,22 +9,22 @@ networks:
 
 services:
   mysql_db:
-    container_name: app-mysql-db-cluster
+    container_name: pga-mysql-db-cluster
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: app-app
+      MYSQL_DATABASE: pga-app
     ports:
       - 30000:3306
     restart: unless-stopped
     volumes:
       - ./data/mysql:/var/lib/mysql
     networks:
-      app-network:
+      pga-network:
         ipv4_address: 172.30.0.20
 
   phpmyadmin:
-    container_name: app-phpmyadmin
+    container_name: pga-phpmyadmin
     image: phpmyadmin:latest
     ports:
       - 30001:80
@@ -32,5 +32,5 @@ services:
       - PMA_ARBITRARY=1
     restart: unless-stopped
     networks:
-      app-network:
+      pga-network:
         ipv4_address: 172.30.0.21

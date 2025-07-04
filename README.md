@@ -7,17 +7,17 @@ This project is a modular Docker setup with separated folders for the database(M
 ```
 project-root/
 │
-├── app-backend/                        # Laravel
+├── pga-backend/                        # Laravel
 │   └── app/
 │   ├── Dockerfile
 │   └── docker-compose.yml
 │
-├── app-frontend/                       # React + Vite
+├── pga-frontend/                       # React + Vite
 │   └── app/
 │   ├── Dockerfile
 │   └── docker-compose.yml
 │
-├── app-database/                       # MySQL + phpMyAdmin
+├── pga-database/                       # MySQL + phpMyAdmin
 │   └── docker-compose.yml
 │
 ├── README.md
@@ -33,7 +33,7 @@ git clone https://github.com/your-username/your-project.git
 
 ### 2. Setup Database
 ```bash
-cd app-database
+cd pga-database
 ```
 - Customize docker-compose.yml (e.g., MySQL password, database name).
 
@@ -46,7 +46,7 @@ docker-compose up -d
 ### 3. Setup Backend (Laravel)
 
 ```bash
-cd ../app-backend
+cd ../pga-backend
 ```
 
 - Customize docker-compose.yml and .env:
@@ -61,13 +61,13 @@ docker-compose up -d
 Enter the container and run migrations:
 
 ```bash
-docker exec -it app-laravel-api php artisan migrate
+docker exec -it pga-laravel-api php artisan migrate
 ```
 
 ### 4. Setup Frontend
 
 ```bash
-cd ../app-frontend
+cd ../pga-frontend
 ```
 
 - Customize docker-compose.yml and .env (e.g., API base URL).
