@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Http;
 
 class PayPalService
 {
+    protected $backendUrl;
+
     protected $clientId;
     protected $secret;
     protected $baseUrl;
@@ -18,7 +20,6 @@ class PayPalService
     protected $checkout_endpoint = '/v2/checkout/orders';
     protected $payment_endpoint = '/v2/payments/captures';
 
-    protected $ngrok_url;
 
     public function __construct()
     {
@@ -28,7 +29,7 @@ class PayPalService
             ? 'https://api-m.sandbox.paypal.com'
             : 'https://api-m.paypal.com';
 
-        $this->ngrok_url = env('NGROK_FORWARDING');
+        $this->backendUrl = env('PGA_BACKEND_URL');
     }
     
 
@@ -57,8 +58,8 @@ class PayPalService
                     ]
                 ]],
                 'application_context' => [
-                    'return_url' => "{$this->ngrok_url}/paypal/success",
-                    'cancel_url' => "{$this->ngrok_url}/paypal/cancel"
+                    'return_url' => "{$this->backendUrl}/paypal/success",
+                    'cancel_url' => "{$this->backendUrl}/paypal/cancel"
                 ]
             ]);
 
